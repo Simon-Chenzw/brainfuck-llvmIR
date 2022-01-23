@@ -1,6 +1,6 @@
 ; brainfuck interpreter
 ; codes not more than 2,000 chars
-; code & input split by ':'
+; code & input split by '!'
 ; 30,000 cells with u8 (0 ~ 255 wraparound)
 
 declare i32 @getchar()
@@ -36,7 +36,7 @@ init:
 
 read.get:
     %char.get = call i32 @getchar()
-    %is.read.sep = icmp eq i32 %char.get, 58
+    %is.read.sep = icmp eq i32 %char.get, 33
     %is.read.eof = icmp eq i32 %char.get, -1
     %is.read.end = or i1 %is.read.sep, %is.read.eof
     %cmd.read.tail.cur = load i32*, i32** %cmd.tail
